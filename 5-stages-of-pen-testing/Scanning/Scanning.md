@@ -2,7 +2,7 @@
 
 Vulnerable virtual machine: https://information.rapid7.com/download-metasploitable-2017.html?LS=1631875&CS=web
 
-free: ```https://sourceforge.net/projects/metasploitable/files/latest/download```
+free: https://sourceforge.net/projects/metasploitable/files/latest/download
 
 # Scanning local netdiscover
 
