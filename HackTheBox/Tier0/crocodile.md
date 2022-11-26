@@ -75,4 +75,77 @@ Supersecretpassword1
 rKXM59ESxesUFHAd
 ```
 
+```
+──(kali㉿kali)-[~]
+└─$ gobuster dir -u http://10.129.75.71 -w /usr/share/dirb/wordlists/common.txt                  
+===============================================================
+Gobuster v3.3
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.129.75.71
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/dirb/wordlists/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.3
+[+] Timeout:                 10s
+===============================================================
+2022/11/26 09:02:47 Starting gobuster in directory enumeration mode
+===============================================================
+/.hta                 (Status: 403) [Size: 277]
+/.htaccess            (Status: 403) [Size: 277]
+/.htpasswd            (Status: 403) [Size: 277]
+/assets               (Status: 301) [Size: 313] [--> http://10.129.75.71/assets/]
+/css                  (Status: 301) [Size: 310] [--> http://10.129.75.71/css/]
+/dashboard            (Status: 301) [Size: 316] [--> http://10.129.75.71/dashboard/]
+/fonts                (Status: 301) [Size: 312] [--> http://10.129.75.71/fonts/]
+/index.html           (Status: 200) [Size: 58565]
+/js                   (Status: 301) [Size: 309] [--> http://10.129.75.71/js/]
+/server-status        (Status: 403) [Size: 277]
+Progress: 4549 / 4615 (98.57%)===============================================================
+2022/11/26 09:03:04 Finished
+===============================================================
+```
+
+```
+┌──(kali㉿kali)-[~]
+└─$ gobuster dir -u http://10.129.75.71 -w /usr/share/dirb/wordlists/common.txt -x .php
+===============================================================
+Gobuster v3.3
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.129.75.71
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/dirb/wordlists/common.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.3
+[+] Extensions:              php
+[+] Timeout:                 10s
+===============================================================
+2022/11/26 09:04:10 Starting gobuster in directory enumeration mode
+===============================================================
+/.php                 (Status: 403) [Size: 277]
+/.hta                 (Status: 403) [Size: 277]
+/.hta.php             (Status: 403) [Size: 277]
+/.htaccess            (Status: 403) [Size: 277]
+/.htaccess.php        (Status: 403) [Size: 277]
+/.htpasswd.php        (Status: 403) [Size: 277]
+/.htpasswd            (Status: 403) [Size: 277]
+/assets               (Status: 301) [Size: 313] [--> http://10.129.75.71/assets/]
+/config.php           (Status: 200) [Size: 0]
+/css                  (Status: 301) [Size: 310] [--> http://10.129.75.71/css/]
+/dashboard            (Status: 301) [Size: 316] [--> http://10.129.75.71/dashboard/]
+/fonts                (Status: 301) [Size: 312] [--> http://10.129.75.71/fonts/]
+/index.html           (Status: 200) [Size: 58565]
+/js                   (Status: 301) [Size: 309] [--> http://10.129.75.71/js/]
+/login.php            (Status: 200) [Size: 1577]
+/logout.php           (Status: 302) [Size: 0] [--> login.php]
+/server-status        (Status: 403) [Size: 277]
+Progress: 9165 / 9230 (99.30%)===============================================================
+2022/11/26 09:04:45 Finished
+===============================================================
+```
+
+
 
